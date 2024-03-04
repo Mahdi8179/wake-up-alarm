@@ -1,0 +1,25 @@
+# Wake up alarm
+
+from datetime import datetime
+
+def time_diff(t1, t2):
+    """
+    Calculate the time difference between two input times.
+    :param t1: The first input time in the format hh:mm:ss
+    :param t2: The second input time in the format hh:mm:ss
+    :return: The time difference in the format hh:mm:ss
+    """
+    t1 = datetime.strptime(t1, "%H:%M:%S")
+    t2 = datetime.strptime(t2, "%H:%M:%S")
+    diff = t2 - t1
+    return diff.seconds // 3600, diff.seconds // 60 % 60, diff.seconds % 60
+
+# Inputs
+t1 = input("Enter the first time (t1) in the format hh:mm:ss: ")
+t2 = input("Enter the second time (t2) in the format hh:mm:ss: ")
+
+# Calculate the time difference
+hours, minutes, seconds = time_diff(t1, t2)
+
+# Output the time left until the alarm goes off
+print(f"The alarm will go off in {hours:02d}:{minutes:02d}:{seconds:02d}.")
